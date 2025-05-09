@@ -1,3 +1,5 @@
+import csv
+
 def main():
     data_input()
 
@@ -5,7 +7,7 @@ def main():
 def data_input():
     data={
         "id":[],
-        "attendence":[]
+        "att":[]
 
     }
     student_number=int(input("how many students you want to enter: "))
@@ -13,8 +15,37 @@ def data_input():
     for s in range(student_number):
         
         data["id"].append(f"{student_id}{s+1:03}")
+        write_id_in_csv(**data)
         
         ...
-    print(*data["id"])
+def write_id_in_csv(**data):
+    
+
+    with open("student sheet.csv",'w',newline='') as file:
+        header=['id','attendence']
+
+        sheet=csv.DictWriter(file,fieldnames=header)
+        
+
+        sheet.writeheader()
+        for i in range(len(data['id'])):
+            sheet_row={
+                "id":data['id'][i],
+            }
+
+            sheet.writerow(sheet_row)
+
+        
+'''
+in this page i have taken the user input to put create a csv file named student heet. the data i have passed is easy to create 
+a normal sequantial ids according to batch and dept code like 242-134-024;
+
+my next featuer will be i will remove those student who leave the batch and another function to add student 
+'''
+        
+
+        
+
+    
 if __name__=="__main__":
     main()
