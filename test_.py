@@ -1,4 +1,11 @@
 import csv
+
+
+
+
+
+
+'''import csv
 data={
         "id":[1,2,3],
         "attendence":["p","a",'p']
@@ -10,5 +17,4 @@ with open("data.csv","w",newline='') as file:
 
     writer.writerow(["id","attendence"])
     writer.writerows(rows)
-
-
+'''
