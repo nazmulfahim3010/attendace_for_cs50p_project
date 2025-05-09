@@ -1,5 +1,18 @@
 import csv
 
+users_dict = {}
+names=[]
+emails=[]
+passwords=[]
+with open('teacher_data.csv', mode='r') as file:  
+    reader = csv.DictReader(file)
+    for row in reader:
+        names.append(row['name'])
+        emails.append(row['email'])
+        passwords.append(row['password'])
+
+
+        
 
 
 

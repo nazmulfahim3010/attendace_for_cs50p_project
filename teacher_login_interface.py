@@ -1,4 +1,5 @@
 import sys
+import csv
 from validate_email_address import validate_email # type: ignore
 def main():
     teacher()
@@ -14,7 +15,7 @@ def teacher():
         sys.exit("Invalid answer please check and restart the system")
     ...
 
-    
+     
 def create_ac(): #no
     name=input("Name: ")
     
@@ -22,11 +23,13 @@ def create_ac(): #no
     email=email_pass[0] # type: ignore
     password=email_pass[1] # type: ignore
 
-    teacher_data={
-        "name":[],
-        "email":[],
-        "password":[]
-    }
+    teacher_data=collect_saved_data()
+    '''
+    till now i have collected the save data now i need to input created data to my 
+    csv file next work to write new data or one another word updating csv file after
+    teacher register
+    '''
+    
 
     teacher_data["name"].append(name)
     teacher_data["email"].append(email)
@@ -66,6 +69,21 @@ def verfication_of_data():
 
 
 
+    ...
+
+def collect_saved_data():
+    
+    names=[]
+    emails=[]
+    passwords=[]
+    with open('teacher_data.csv', mode='r') as file:  
+        reader = csv.DictReader(file)
+        for row in reader:
+            names.append(row['name'])
+            emails.append(row['email'])
+            passwords.append(row['password'])
+    teacher_data={'name':names,'email':emails,'password':passwords}
+    return teacher_data
     ...
 if __name__=="__main__":
     main()
