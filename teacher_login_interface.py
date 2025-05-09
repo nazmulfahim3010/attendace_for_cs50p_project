@@ -30,7 +30,6 @@ def create_ac(): #no
     teacher register
     '''
     
-
     teacher_data["name"].append(name)
     teacher_data["email"].append(email)
     teacher_data["password"].append(password)

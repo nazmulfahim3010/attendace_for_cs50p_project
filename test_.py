@@ -4,6 +4,7 @@ users_dict = {}
 names=[]
 emails=[]
 passwords=[]
+
 with open('teacher_data.csv', mode='r') as file:  
     reader = csv.DictReader(file)
     for row in reader:
