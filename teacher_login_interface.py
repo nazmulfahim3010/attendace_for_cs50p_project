@@ -23,6 +23,12 @@ def create_ac(): #no
     email=email_pass[0] # type: ignore
     password=email_pass[1] # type: ignore
 
+    if check_csv_existing(email):
+        print("you already have an account please login\nyour email exist in our data")
+        match_ac()
+        return
+        ...
+
     teacher_data=collect_saved_data()
     '''
     till now i have collected the save data now i need to input created data to my 
@@ -33,6 +39,26 @@ def create_ac(): #no
     teacher_data["name"].append(name)
     teacher_data["email"].append(email)
     teacher_data["password"].append(password)
+    
+#writing on csv
+    with open("teacher_data.csv",'w',newline='') as file:
+        header=['name','email','password']
+
+        sheet=csv.DictWriter(file,fieldnames=header)
+        
+
+        sheet.writeheader()
+        
+        for i in range(len(teacher_data['name'])):
+            sheet_row={
+                "name":teacher_data['name'][i],
+                "email":teacher_data['email'][i],
+                "password":teacher_data["password"][i]
+                
+            }
+            print(sheet_row)
+
+            sheet.writerow(sheet_row)
 
     print(teacher_data)
     ...
@@ -84,6 +110,24 @@ def collect_saved_data():
     teacher_data={'name':names,'email':emails,'password':passwords}
     return teacher_data
     ...
+
+def check_csv_existing(email):
+    email_list=[]
+    with open("teacher_data.csv",mode='r') as file:
+        read_=csv.DictReader(file)
+        
+        for line in read_:
+            email_list.append(line['email'])
+    if email in email_list:
+        return True
+    else:
+        return False
+    
+    ...
+
+
+
+
 if __name__=="__main__":
     main()
 

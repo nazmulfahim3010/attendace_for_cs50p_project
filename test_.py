@@ -1,34 +1,12 @@
 import csv
 
-users_dict = {}
-names=[]
-emails=[]
-passwords=[]
 
-with open('teacher_data.csv', mode='r') as file:  
-    reader = csv.DictReader(file)
-    for row in reader:
-        names.append(row['name'])
-        emails.append(row['email'])
-        passwords.append(row['password'])
-
-
+email_list=[]
+with open("teacher_data.csv",mode='r') as file:
+    read_=csv.DictReader(file)
+    
+    for line in read_:
+        email_list.append(line['email'])
         
-
-
-
-
-
-'''import csv
-data={
-        "id":[1,2,3],
-        "attendence":["p","a",'p']
-
-    }
-rows=zip(data["id"],data["attendence"])
-with open("data.csv","w",newline='') as file:
-    writer=csv.writer(file)
-
-    writer.writerow(["id","attendence"])
-    writer.writerows(rows)
-'''
+    
+print(email_list)
