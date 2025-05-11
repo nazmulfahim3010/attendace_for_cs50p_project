@@ -1,6 +1,6 @@
 import sys
 import csv
-from validate_email_address import validate_email # type: ignore
+from validate_email_address import validate_email 
 def main():
     teacher()
 
@@ -56,11 +56,11 @@ def create_ac(): #no
                 "password":teacher_data["password"][i]
                 
             }
-            print(sheet_row)
+         
 
             sheet.writerow(sheet_row)
 
-    print(teacher_data)
+   
     ...
 def match_ac():
     print("working match")
