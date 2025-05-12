@@ -1,12 +1,15 @@
 import sys
 import csv
-from validate_email_address import validate_email 
+import pyfiglet#type:ignore
+import datetime
+from project_msg import cowsay_msg_cow,figlet_msg,cowsay_msg_ghost,cowsay_msg_tux
+from validate_email_address import validate_email #type:ignore
 def main():
     teacher()
 
 
 def teacher():
-    dec=input("you need to create?(yes/no) ").lower()
+    dec=input("do you have any account (yes/no)  ").lower()
     if "no" in dec:
         create_ac()
     elif "yes" in dec:
@@ -17,6 +20,7 @@ def teacher():
 
      
 def create_ac(): #no
+    print(figlet_msg("create account"))
     name=input("Name: ")
     
     email_pass=verfication_of_data()
@@ -24,7 +28,7 @@ def create_ac(): #no
     password=email_pass[1] # type: ignore
 
     if check_csv_existing(email):
-        print("you already have an account please login\nyour email exist in our data")
+        print(cowsay_msg_tux("you already have an account please login\nyour email exist in our data"))
         match_ac()
         return
         ...
@@ -59,13 +63,32 @@ def create_ac(): #no
          
 
             sheet.writerow(sheet_row)
+    
+    welcome()
+    print(cowsay_msg_tux("welcome your account has been created"))
 
-   
     ...
 def match_ac():
-    print("working match")
-    ...
+        print(figlet_msg("login"))
+        i=0
+        while i<3:
+        
+            email_and_pass=verfication_of_data()
+            email=email_and_pass[0]#type:ignore
+            password=email_and_pass[1]#type:ignore
+            #email="fahm@gmail.com"
+            #password="1234"
 
+            with open("teacher_data.csv",'r') as file:
+                lines=csv.DictReader(file)
+                for line in lines:
+                    
+                    if email in line['email'] and password in line['password']:
+                        welcome()
+                        return    
+                
+                print(cowsay_msg_ghost("user email and password don't match"))    
+            i+=1
 
 def verfication_of_data():
     
@@ -76,7 +99,7 @@ def verfication_of_data():
             break#email verification    
             ...
         else:
-            print("your email is not valid")
+            print(cowsay_msg_ghost("your email is not valid"))
             
     while True:
         password1=input("password: ")
@@ -87,7 +110,7 @@ def verfication_of_data():
             is_right_pass=True
             break
         else:
-            print("password Invlid")
+            print(cowsay_msg_ghost("password Invlid"))
 
     if is_right_mail and is_right_pass:
         return email,password
@@ -125,6 +148,11 @@ def check_csv_existing(email):
     
     ...
 
+def welcome():
+    msg=pyfiglet.figlet_format("wellcome")
+    print(msg)
+    date=datetime.datetime.now()
+    print(f"date:{date.day}-{date.month}-{date.year}\ntime:{date.hour}:{date.minute}")
 
 
 

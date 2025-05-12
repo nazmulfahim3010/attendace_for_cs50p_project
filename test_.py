@@ -1,12 +1,10 @@
 import csv
+import cowsay 
+from teacher_login_interface import verfication_of_data
+cowsay.tux("Hi, I'm Tux the Penguin!")
+cowsay.beavis("Uhhh... Hello!")
+cowsay.dragon("I am a dragon 🐉!")
+cowsay.ghostbusters("Who you gonna call?")
+cowsay.kitty("Meow!")
+cowsay.meow("Meeow!")
 
-
-email_list=[]
-with open("teacher_data.csv",mode='r') as file:
-    read_=csv.DictReader(file)
-    
-    for line in read_:
-        email_list.append(line['email'])
-        
-    
-print(email_list)

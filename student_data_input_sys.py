@@ -22,7 +22,7 @@ def write_id_in_csv(**data):
     
 
     with open("student sheet.csv",'w',newline='') as file:
-        header=['id','attendence']
+        header=['id','attandance']
 
         sheet=csv.DictWriter(file,fieldnames=header)
         
