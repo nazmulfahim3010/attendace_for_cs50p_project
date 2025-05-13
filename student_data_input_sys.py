@@ -1,4 +1,6 @@
 import csv
+from project_msg import cowsay_msg_tux
+from project import menu
 
 def main():
     data_input()
@@ -16,8 +18,10 @@ def data_input():
         
         data["id"].append(f"{student_id}{s+1:03}")
         write_id_in_csv(**data)
+    
+    return
         
-        ...
+    ...
 def write_id_in_csv(**data):
     
 
@@ -34,6 +38,7 @@ def write_id_in_csv(**data):
             }
 
             sheet.writerow(sheet_row)
+    print(cowsay_msg_tux("student file has created"))
 
         
 '''

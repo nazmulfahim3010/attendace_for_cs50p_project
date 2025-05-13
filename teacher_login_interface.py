@@ -12,10 +12,13 @@ def teacher():
     dec=input("do you have any account (yes/no)  ").lower()
     if "no" in dec:
         create_ac()
+        return True
     elif "yes" in dec:
         match_ac()
+        return True
     else:
         sys.exit("Invalid answer please check and restart the system")
+        return False
     ...
 
      
