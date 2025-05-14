@@ -18,9 +18,9 @@ def menu():
     
     ...
 def menu_dec():
-    print()
-    ans=input("features:\n1. attendance \n2.marks input\n3.total attendeance" \
+    print("features:\n1. attendance \n2.marks input\n3.total attendeance" \
         "\n4.create student attendance file\n")
+    ans=input()
     return ans
 
 
