@@ -13,9 +13,10 @@ def data_input():
     }
     student_number=int(input("how many students you want to enter: "))
     student_id="242-234-"#user input
-    for s in range(student_number):
+    for s in range(student_number+1):
         
-        data["id"].append(f"{student_id}{s+1:03}")
+        data["id"].append(f"{student_id}{s:03}")
+        data["att"].append(0)
         write_id_in_csv(**data)
 
     print(cowsay_msg_tux("student file has created"))
@@ -27,7 +28,7 @@ def write_id_in_csv(**data):
     
 
     with open("student sheet.csv",'w',newline='') as file:
-        header=['id','attandance']
+        header=['id','attendance']
 
         sheet=csv.DictWriter(file,fieldnames=header)
         
@@ -36,11 +37,10 @@ def write_id_in_csv(**data):
         for i in range(len(data['id'])):
             sheet_row={
                 "id":data['id'][i],
+                "attendance":data["att"][i]
             }
 
             sheet.writerow(sheet_row)
-            
-    
 
         
 '''
@@ -49,9 +49,7 @@ a normal sequantial ids according to batch and dept code like 242-134-024;
 
 my next featuer will be i will remove those student who leave the batch and another function to add student 
 '''
-        
 
-        
 
     
 if __name__=="__main__":

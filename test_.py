@@ -14,7 +14,7 @@ with open("student sheet.csv","r") as file:
         attendance.append(int(line['attendance']))
         id_s.append(line["id"])
 
-for i in range(len(attendance)):
+for i in range(len(attendance)+1):
     is_bool=True
     
     while is_bool:
