@@ -1,14 +1,17 @@
 from teacher_login_interface import collect_saved_data
 import csv
 import pandas as pd
+from add_file_name import build_file
 
 def main():
-    read_()
-    see_total_attendance()
+    file_name=build_file()
+    read_(file_name)
+    see_total_attendance(file_name)
     ...
-def read_():    
+def read_(file_name): 
+       
 
-    with open("student sheet.csv","r") as file:
+    with open(file_name,"r") as file:
         lines=csv.DictReader(file)
         attendance=[]
         id_s=[]
@@ -39,15 +42,15 @@ def read_():
                 
                 ...    
 
-    df=pd.read_csv("student sheet.csv")
+    df=pd.read_csv(file_name)
     df['attendance']=attendance
-    df.to_csv('student sheet.csv',index=False)
+    df.to_csv(file_name,index=False)
     ...
 
 
-def see_total_attendance():
+def see_total_attendance(file_name):
     print("id-> ***-***-000 \n indicates this your total working day")
-    df=pd.read_csv("student sheet.csv")
+    df=pd.read_csv(file_name)
     
     print(df)
     ...

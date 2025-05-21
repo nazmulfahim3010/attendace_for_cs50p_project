@@ -1,6 +1,7 @@
 from student_data_input_sys import data_input
 from teacher_login_interface import teacher
 from attendance_one_by_one import read_,see_total_attendance
+from add_file_name import build_file
 import sys
 
 def main():
@@ -8,18 +9,20 @@ def main():
         menu()
     else:
         sys.exit("something wrong")
-    ...
+    
 
 def menu():
     ans= menu_dec()
-    if ans=='4':
+    if ans=='1':
         data_input()
         menu()
-    elif ans=='1':
-        read_()
+    elif ans=='2':
+        file_name=build_file()
+        read_(file_name)
         menu()
     elif ans=='3':
-        see_total_attendance()
+        file_name=build_file()
+        see_total_attendance(file_name)
         menu()
 
 
