@@ -1,1 +1,1 @@
-@classmethod
+student_data_input_sys

@@ -1,41 +1,15 @@
-#give attedance
+def build_file(_key):
+    batch_id={
+        "1st":"212-134-",
+        "2nd":"221-134-",
+        "3rd":"222-134-",
+        "4th":"231-134-",
+        "5th":"232-134-",
+        "6th":"241-134-",
+        "7th":"242-134-"
+    }
 
-import pandas as pd
-from datetime import date
-import csv
-
-with open("student sheet.csv","r") as file:
-    lines=csv.DictReader(file)
-    attendance=[]
-    id_s=[]
-
-    for line in lines:
-
-        attendance.append(int(line['attendance']))
-        id_s.append(line["id"])
-
-for i in range(len(attendance)+1):
-    is_bool=True
+    student_batch=input("Your student batch number? ")
+    student_id=batch_id[student_batch]
+        
     
-    while is_bool:
-        x=input(f"{id_s[i]} ")
-        if x=="p":
-            attendance[i]+=1
-            is_bool=False
-        elif x=='a':
-            attendance[i]+=0
-            is_bool=False
-        else:
-            is_bool=True
-            
-            ...    
-
-df=pd.read_csv("student sheet.csv")
-df['attendance']=attendance
-df.to_csv('student sheet.csv',index=False)
-...
-
-
-
-
-

@@ -1,5 +1,6 @@
 import csv
 from project_msg import cowsay_msg_tux,figlet_msg
+from add_file_name import build_file
 
 def main():
     data_input()
@@ -8,7 +9,8 @@ def main():
 def data_input():
     data={
         "id":[],
-        "att":[]
+        "att":[],
+        
 
     }
     batch_id={
@@ -20,15 +22,22 @@ def data_input():
         "6th":"241-134-",
         "7th":"242-134-"
     }
-    student_number=int(input("how many students you want to enter: "))
+
     student_batch=input("Your student batch number? ")
     student_id=batch_id[student_batch]
     sheet_name=f"{student_id} {student_batch} sheet.csv"
+    
+    
+    student_number=int(input("how many students you want to enter: "))
+
+
+    
     for s in range(student_number+1):
-        
+         
         data["id"].append(f"{student_id}{s:03}")
         data["att"].append(0)
-        write_id_in_csv(**data,filename=sheet_name)
+        data["file_name"]=sheet_name # type: ignore
+        write_id_in_csv(**data)
 
     print(cowsay_msg_tux("student file has created"))
     
@@ -36,10 +45,12 @@ def data_input():
         
     ...
 def write_id_in_csv(**data):
-    filename = data.get("filename", "student sheet.csv")
+    need_sheet_name=True
+    file_name=data["file_name"]
+    
 
 
-    with open(filename,'w',newline='') as file:
+    with open(file_name,'w',newline='') as file:
         header=['id','attendance']
 
         sheet=csv.DictWriter(file,fieldnames=header)
