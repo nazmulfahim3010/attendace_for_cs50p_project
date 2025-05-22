@@ -1,6 +1,8 @@
 import csv
 from project_msg import cowsay_msg_tux,figlet_msg
 from add_file_name import build_file
+from tabulate import tabulate #type:ignore
+
 
 def main():
     data_input()
@@ -22,6 +24,20 @@ def data_input():
         "6th":"241-134-",
         "7th":"242-134-"
     }
+
+    data_for_batch = [
+    {"BATCH": "1st", "BATCH ID": "212-134-***"},
+    {"BATCH": "2nd", "BATCH ID": "221-134-***"},
+    {"BATCH": "3rd", "BATCH ID": "222-134-***"},
+    {"BATCH": "4th", "BATCH ID": "231-134-***"},
+    {"BATCH": "5th", "BATCH ID": "232-134-***"},
+    {"BATCH": "6th", "BATCH ID": "241-134-***"},
+    {"BATCH": "7th", "BATCH ID": "242-134-***"},
+    {"BATCH": "8th", "BATCH ID": "251-134-***"},
+    {"BATCH": "9th", "BATCH ID": "252-134-***"}
+]
+
+    print(tabulate(data_for_batch, headers="keys", tablefmt="fancy_grid"))
 
     student_batch=input("Your student batch number? ")
     student_id=batch_id[student_batch]
