@@ -1,5 +1,5 @@
 import csv
-from project_msg import cowsay_msg_tux,figlet_msg
+from project_msg import cowsay_msg_tux,figlet_msg,cowsay_msg_ghost
 from add_file_name import build_file
 from tabulate import tabulate #type:ignore
 
@@ -39,7 +39,15 @@ def data_input():
 
     print(tabulate(data_for_batch, headers="keys", tablefmt="fancy_grid"))
 
-    student_batch=input("Your student batch number? ")
+    while True:
+        student_batch=input("Select student batch? ")
+        if student_batch in batch_id:
+            break
+            
+        else:
+            print(cowsay_msg_ghost("Invalid batch number"))
+            ...
+
     student_id=batch_id[student_batch]
     sheet_name=f"{student_id} {student_batch} sheet.csv"
     

@@ -1,6 +1,6 @@
 from teacher_login_interface import collect_saved_data
 import csv
-import pandas as pd
+import pandas as pd #type:ignore
 from add_file_name import build_file
 
 def main():
