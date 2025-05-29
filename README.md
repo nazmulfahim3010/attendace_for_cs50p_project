@@ -6,7 +6,7 @@
 ### github: nazmulfahim3010
 ### edx username:nazmulfahim000
  #### Description:
-    This project have 4 key features they are :
+## This project have 4 key features they are :
    **1.create new file for batch students**
    **2.Give attendance and modify attendance data**
    **3.See total attendance in a user friendly format**
